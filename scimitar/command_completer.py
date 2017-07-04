@@ -24,6 +24,9 @@ class CommandCompleter(Completer):
         raise NotImplementedError('Must override _complete_command_arguments')
 
     def _prune_nonmatches(self, candidates, being_completed):
+        if not candidates:
+            return []
+
         if being_completed:
             result = [
                 candidate for candidate in candidates
