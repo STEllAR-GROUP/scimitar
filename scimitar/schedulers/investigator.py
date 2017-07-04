@@ -11,9 +11,9 @@
 #
 
 import re
-import errors
+from scimitar import errors
 import pexpect
-import console
+from scimitar import console
 import pbs
 import slurm
 

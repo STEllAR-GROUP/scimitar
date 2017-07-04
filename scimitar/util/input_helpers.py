@@ -20,7 +20,7 @@ import os.path
 
 from . import signals
 from . import vt100 as v
-from config import settings
+from scimitar.config import settings
 
 signals_config = settings['signals']
 FORMAT_CONSTS = {'u1': v.format._underline_on, 'u0': v.format._underline_off}

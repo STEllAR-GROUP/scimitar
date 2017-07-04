@@ -22,7 +22,8 @@ import thread
 from util import vt100, print_out, print_error, raw_input_async, repr_str, cleanup_terminal, init_terminal, register_completer
 import prompt_toolkit as ptk
 from __ver__ import VERSION
-from sessions import modes, offline_session, debug_session
+from scimitar.sessions import offline_session, debug_session
+import modes
 import config
 import errors
 

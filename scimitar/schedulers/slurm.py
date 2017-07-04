@@ -11,9 +11,9 @@
 #
 
 import re
-import errors
+import scimitar.errors
 import pexpect
-import console
+import scimitar.console
 
 delimited_nodes_re = re.compile(r'\w+(?:\[\d+(?:-\d+)?(?:,\d+(?:-\d+)?)*\])?')
 grouped_nodes_re = re.compile(r'([^[]+)\[([^]]+)\]')

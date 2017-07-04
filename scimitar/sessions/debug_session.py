@@ -13,13 +13,13 @@
 from collections import deque
 import threading
 
-import errors
-import modes
-import console
-import mi_interface as mi
-from config import settings
-from command_completer import CommandCompleter
-from util import format_error, format_warning, format_info, repr_str_dict
+import scimitar.errors
+import scimitar.modes
+import scimitar.console
+import scimitar.mi_interface as mi
+from scimitar.config import settings
+from scimitar.command_completer import CommandCompleter
+from scimitar.util import format_error, format_warning, format_info, repr_str_dict
 
 session_manager = None
 selected_sessions = None

@@ -13,15 +13,15 @@ import re
 import threading
 import pexpect
 
-import modes
-import errors
-import console
-import mi_interface
+import scimitar.modes
+from scimitar import errors
+from scimitar import console
+import scimitar.mi_interface
 import debug_session
-import schedulers.investigator as csssi # chief scimitar scheduler system investigator
-from util import print_ahead, print_out, print_info, print_warning
-from config import settings
-from command_completer import CommandCompleter
+import scimitar.schedulers.investigator as csssi # chief scimitar scheduler system investigator
+from scimitar.util import print_ahead, print_out, print_info, print_warning
+from scimitar.config import settings
+from scimitar.command_completer import CommandCompleter
 
 gdb_config = settings['gdb']
 hops = console.HopManager()

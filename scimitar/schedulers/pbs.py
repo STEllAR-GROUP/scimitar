@@ -11,9 +11,9 @@
 #
 
 import re
-import errors
+import scimitar.errors
 import pexpect
-import console
+import scimitar.console
 
 
 def ls_user_jobs(term):
