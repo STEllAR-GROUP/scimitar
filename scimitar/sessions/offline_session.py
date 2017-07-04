@@ -9,14 +9,12 @@
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 #
+
 import re
 import threading
 import pexpect
 
-import scimitar.modes
-from scimitar import errors
-from scimitar import console
-import scimitar.mi_interface
+from scimitar import modes, errors, console, mi_interface
 import debug_session
 import scimitar.schedulers.investigator as csssi # chief scimitar scheduler system investigator
 from scimitar.util import print_ahead, print_out, print_info, print_warning

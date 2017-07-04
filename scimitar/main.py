@@ -49,7 +49,7 @@ BANNER = '''
         ,+77I????++++++=+++=,,I7+:.
            . ..,:~====~::,.
 
-Copyright (C) 2016 Parsa Amini
+Copyright (C) 2016-2017 Parsa Amini
 Copyright (C) 2016 Hartmut Kaiser
 Copyright (C) 2016 Thomas Heller
 

@@ -13,9 +13,7 @@
 from collections import deque
 import threading
 
-import scimitar.errors
-import scimitar.modes
-import scimitar.console
+from scimitar import errors, modes, console
 import scimitar.mi_interface as mi
 from scimitar.config import settings
 from scimitar.command_completer import CommandCompleter
