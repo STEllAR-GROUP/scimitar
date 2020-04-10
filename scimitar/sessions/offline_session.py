@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
-# 
+#
 # Copyright (c) 2016 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
@@ -16,7 +16,7 @@ import pexpect
 
 from scimitar import modes, errors, console, mi_interface
 import debug_session
-import scimitar.schedulers.investigator as csssi # chief scimitar scheduler system investigator
+import scimitar.schedulers.investigator as csssi  # chief scimitar scheduler system investigator
 from scimitar.util import print_ahead, print_out, print_info, print_warning
 from scimitar.config import settings
 from scimitar.command_completer import CommandCompleter
@@ -27,7 +27,7 @@ default_terminal = None
 default_terminal_scheduler = None
 
 
-def _establish_default_terminal(reestablish = False):
+def _establish_default_terminal(reestablish=False):
     global default_terminal
     if not default_terminal:
         default_terminal = console.Terminal(hops.list_hops())
@@ -158,11 +158,11 @@ class _AttachPidThread(threading.Thread):
         try:
             self.term = console.Terminal(
                 hops.list_hops(),
-                target_host = self.host,
-                meta = self.pid,
-                tag = self.tag,
-                prompt_re = r'\(gdb\)\ \r\n',
-                exit_re = r'&"quit\n"|\^exit',
+                target_host=self.host,
+                meta=self.pid,
+                tag=self.tag,
+                prompt_re=r'\(gdb\)\ \r\n',
+                exit_re=r'&"quit\n"|\^exit',
             )
             self.term.connect()
 
@@ -198,7 +198,7 @@ def _attach_pids(pid_dict):
             tag = str(tag_counter)
 
             # Build the command line and launch GDB
-            cmd = gdb_cmd + [gdb_attach_tmpl.format(pid = pid)]
+            cmd = gdb_cmd + [gdb_attach_tmpl.format(pid=pid)]
             cmd_str = ' '.join(cmd)
 
             attach_pid_task = _AttachPidThread(host, pid, tag, cmd_str)
@@ -208,8 +208,8 @@ def _attach_pids(pid_dict):
     for tag, task in tasks.iteritems():
         print_info(
             'Connecting to Process "{pid}" on "{host}"...',
-            host = task.host or 'localhost',
-            pid = task.pid
+            host=task.host or 'localhost',
+            pid=task.pid
         )
 
         task.join()
@@ -238,7 +238,7 @@ def attach(args):
                     host_path += '.' + host
                 dead_pids.append(
                     '{host}:{pid}'.format(
-                        host = host_path or 'localhost', pid = pid
+                        host=host_path or 'localhost', pid=pid
                     )
                 )
         return dead_pids
@@ -253,7 +253,7 @@ def attach(args):
 
     def _parse_group_pids(expr):
         pid_dict = {}
-        for app_instance in re.finditer('((?:(\w+):)?(\d+))', expr):
+        for app_instance in re.finditer(r'((?:(\w+):)?(\d+))', expr):
             host = app_instance.group(2)
             pid = int(app_instance.group(3))
 
@@ -264,7 +264,7 @@ def attach(args):
 
     args_string = ' '.join(args)
     # Verify command syntax
-    if len(args) < 1 or not re.match('(?:(?:\w+:)?\d+|\s)+', args_string):
+    if len(args) < 1 or not re.match(r'(?:(?:\w+:)?\d+|\s)+', args_string):
         raise errors.BadArgsError(
             'attach', 'attach [<host>:]<pid>[ [<host>:]<pid> [...]]'
         )
@@ -309,7 +309,7 @@ def hop(args):
     for host in args:
         hops.add(host)
 
-    _establish_default_terminal(reestablish = True)
+    _establish_default_terminal(reestablish=True)
 
     return modes.offline, None
 
@@ -337,7 +337,7 @@ def unhop(args):
             'unhop', 'No more hops currently exist. Nothing can be removed'
         )
 
-    _establish_default_terminal(reestablish = True)
+    _establish_default_terminal(reestablish=True)
 
     return modes.offline, None
 
@@ -355,7 +355,7 @@ commands = {
     'job': (job, job_complete),
     'jobs': (list_jobs, None),
     'attach': (attach, None),
-    'debug': (debug, None), # HACK: For debugging only
+    'debug': (debug, None),  # HACK: For debugging only
     'quit': (quit, None),
 }
 
@@ -374,5 +374,3 @@ class OfflineSessionCommandCompleter(CommandCompleter):
     def _complete_command_arguments(self, cmd, args):
         if commands.has_key(cmd) and commands[cmd][1]:
             return commands[cmd][1](args)
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

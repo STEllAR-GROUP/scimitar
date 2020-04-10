@@ -103,5 +103,3 @@ def cleanup_terminal():
     # Clean up the terminal before letting go
     v.unlock_keyboard()
     v.format.clear_all_chars_attrs()
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
-# 
+#
 # Copyright (c) 2016 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
@@ -30,5 +30,3 @@ except ImportError:
         'Unable to import scimitar.\n'
         'Make sure the scimitar-gdb directory is accessible to Python via sys.path\n'
     )
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

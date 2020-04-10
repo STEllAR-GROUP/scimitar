@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
-# 
+#
 # Copyright (c) 2016 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
@@ -39,7 +39,7 @@ def init_debugging_mode(mgr, msgs):
         selected_sessions = [oldest_session.tag]
 
     for tag in session_manager.list_session_tags():
-        sessions_history[tag] = deque(maxlen = history_length)
+        sessions_history[tag] = deque(maxlen=history_length)
         sessions_history[tag].append(msgs[tag])
 
     return modes.debugging, None
@@ -48,7 +48,7 @@ def init_debugging_mode(mgr, msgs):
 def _ls_out():
     ls_out = []
     for s_i in session_manager.list_sessions():
-        if not s_i.tag in selected_sessions:
+        if s_i.tag not in selected_sessions:
             ls_head = s_i.tag
         else:
             ls_head = '(*) {}'.format(s_i.tag)
@@ -91,7 +91,7 @@ def select_session_complete(args):
         return ['none']
 
     return [
-        tag for tag in session_manager.list_session_tags() if not tag in args
+        tag for tag in session_manager.list_session_tags() if tag not in args
     ]
 
 
@@ -178,6 +178,7 @@ def _ensure_sessions_selected(cmd):
             'No session(s) selected. Debugging mode failed to start. (Maybe init_debugging_mode() was not called?)'
         )
 
+
 def _ensure_valid_sessions_selected(cmd):
     '''Verifies if all selected sessions are still alive'''
     non_existing_sessions = [
@@ -188,6 +189,7 @@ def _ensure_valid_sessions_selected(cmd):
             cmd, 'Cannot proceed. Dead session(s): {0}.'.
             format(', '.format(non_existing_sessions))
         )
+
 
 def message_history(args):
     '''Prints the selected sessions' history records at index args[0]'''
@@ -253,7 +255,7 @@ def gdb_exec(cmd):
         def _run(self):
             # Send the command
             gdb_response = self.term.query(self.cmd)
-            # In case GDB dies 
+            # In case GDB dies
             if gdb_response in (r'^exit', r'^kill'):
                 raise console.SessionDiedError
             else:
@@ -359,7 +361,7 @@ def debug(args):
 commands = {
     'ls': (list_sessions, None),
     'select': (select_session, select_session_complete),
-    'debug': (debug, None), # HACK: For debugging only
+    'debug': (debug, None),  # HACK: For debugging only
     'history': (message_history, None),
     'end': (end_sessions, None),
     'quit': (quit, None),
@@ -382,5 +384,3 @@ class DebugSessionCommandCompleter(CommandCompleter):
     def _complete_command_arguments(self, cmd, args):
         if commands.has_key(cmd) and commands[cmd][1]:
             return commands[cmd][1](args)
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

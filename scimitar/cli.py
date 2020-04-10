@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
 #
-# Copyright (c) 2016-2017 Parsa Amini
+# Copyright (c) 2016-2020 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
 #
@@ -20,7 +20,6 @@ import thread
 
 #from util import print_ahead
 from util import vt100, print_out, print_error, raw_input_async, repr_str, cleanup_terminal, init_terminal, register_completer
-import prompt_toolkit as ptk
 from scimitar.sessions import offline_session, debug_session
 import modes
 import config
@@ -140,30 +139,30 @@ def main():
             except errors.UnknownCommandError as e:
                 print_error(
                     'Unknown command: {u1}{cmd}{u0}',
-                    cmd = repr_str(e.expression)
+                    cmd=repr_str(e.expression)
                 )
             except errors.BadArgsError as e:
                 print_error(
                     'Command "{u1}{cmd}{u0}" cannot be initiated with the arguments provided.\n{msg}',
-                    cmd = e.expression,
-                    msg = e.message
+                    cmd=e.expression,
+                    msg=e.message
                 )
             except errors.BadConfigError as e:
                 print_error(
                     'The command encountered errors with the provided arguments.\n{u1}{cmd}{u0}: {msg}',
-                    cmd = e.expression,
-                    msg = e.message
+                    cmd=e.expression,
+                    msg=e.message
                 )
             except errors.CommandFailedError as e:
                 print_error(
                     'The command encountered an error and did not run properly.\n{u1}{cmd}{u0}: {msg}',
-                    cmd = e.expression,
-                    msg = e.message
+                    cmd=e.expression,
+                    msg=e.message
                 )
             except errors.CommandImplementationIncompleteError:
                 print_error(
                     'The implementation of command "{u1}{cmd}{u0}" is not complete yet.',
-                    cmd = cmd
+                    cmd=cmd
                 )
             except KeyboardInterrupt:
                 print_error('Action cancelled by the user.')
@@ -173,5 +172,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

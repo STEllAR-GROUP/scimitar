@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
-# 
+#
 # Copyright (c) 2016 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
@@ -111,11 +111,11 @@ class Terminal(object):
     def __init__(
         self,
         hops,
-        target_host = None,
-        meta = None,
-        tag = None,
-        exit_re = None,
-        prompt_re = None,
+        target_host=None,
+        meta=None,
+        tag=None,
+        exit_re=None,
+        prompt_re=None,
     ):
         self.con = None
         self.hops = hops
@@ -136,11 +136,11 @@ class Terminal(object):
         self.con = pexpect.spawn('/usr/bin/env bash')
 
         for hop in self.hops:
-            self.con.sendline('ssh -tt {host}'.format(host = hop))
+            self.con.sendline('ssh -tt {host}'.format(host=hop))
             self.hostname = hop
 
         if self.target_host:
-            self.con.sendline('ssh -tt {host}'.format(host = self.target_host))
+            self.con.sendline('ssh -tt {host}'.format(host=self.target_host))
             self.hostname = self.target_host
 
         self.con.sendline(self.ps1_export_cmd)
@@ -195,7 +195,7 @@ class Terminal(object):
             '^.*aye[\r\n]*$',
             self.query(
                 '{cmd} >/dev/null 2>&1 && echo aye || echo nay'.
-                format(cmd = cmd)
+                format(cmd=cmd)
             ),
             re.DOTALL
         ):
@@ -210,7 +210,7 @@ class Terminal(object):
 
         """
         return self.test_query(
-            'ps -p {pid}'.format(pid = process_id), re.DOTALL
+            'ps -p {pid}'.format(pid=process_id), re.DOTALL
         )
 
     def is_alive(self):
@@ -220,5 +220,3 @@ class Terminal(object):
         return '<Terminal {0} @{1}:{2}>'.format(
             self.tag, self.hostname, self.meta
         )
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

@@ -150,13 +150,13 @@ class HPXThread():
             filename = frame.find_sal().symtab.filename
 
             self.pc_string = '0x{pc:x} in {function} at {file_path}:{line}'.format(
-                pc = frame.pc(),
-                function = function_name,
-                file_path = filename,
-                line = line
+                pc=frame.pc(),
+                function=function_name,
+                file_path=filename,
+                line=line
             )
         except:
-            self.pc_string = '0x{pc:x} in <unknown>'.format(pc = frame.pc())
+            self.pc_string = '0x{pc:x} in <unknown>'.format(pc=frame.pc())
 
         self.frame = frame
 
@@ -179,15 +179,13 @@ class HPXThread():
             '    state           = {state} \n'
             '    state_ex        = {state_ex}\n'
             '    pc              = {pc}\n'.format(
-                parent = self.parent_id,
-                desc = self.description,
-                desc_type = self.lco_description.type,
-                addr = self.lco_description.address,
-                lco = self.lco_description,
-                state = self.state,
-                state_ex = self.state_ex,
-                pc = self.pc_string
+                parent=self.parent_id,
+                desc=self.description,
+                desc_type=self.lco_description.type,
+                addr=self.lco_description.address,
+                lco=self.lco_description,
+                state=self.state,
+                state_ex=self.state_ex,
+                pc=self.pc_string
             )
         )
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

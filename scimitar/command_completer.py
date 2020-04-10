@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
-# 
+#
 # Copyright (c) 2016-2017 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
@@ -44,7 +44,7 @@ class CommandCompleter(Completer):
         last_word = document.get_word_before_cursor()
 
         # First token
-        if not document.current_line or not ' ' in document.current_line:
+        if not document.current_line or ' ' not in document.current_line:
             candidates = self._complete_command()
         else:
             words = document.current_line.split()
@@ -60,5 +60,3 @@ class CommandCompleter(Completer):
         if not matches:
             return []
         return [Completion(i, start_position=-len(last_word)) for i in matches]
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

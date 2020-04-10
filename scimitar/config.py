@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # Scimitar: Ye Distributed Debugger
-# 
+#
 # Copyright (c) 2016-2017 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
@@ -15,8 +15,8 @@ from __future__ import unicode_literals
 settings = {
     'ui': {
         'prompts': [
-            '# ', # Level 0: Offline mode
-            '$ ', # Level 1: Debugging mode
+            '# ',  # Level 0: Offline mode
+            '$ ',  # Level 1: Debugging mode
         ],
     },
     'signals': {
@@ -37,9 +37,9 @@ settings = {
         # Supress banner, interactive mode
         'cmd': [
             'gdb',
-            '-interpreter=mi2', # Use GDB/MI2 interface
-            '-quiet', # Suppress banner
-            '--nx', # Don't load any .gdbinits whatsoever
+            '-interpreter=mi2',  # Use GDB/MI2 interface
+            '-quiet',  # Suppress banner
+            '--nx',  # Don't load any .gdbinits whatsoever
         ],
         'attach':
             '--pid={pid}',
@@ -48,5 +48,3 @@ settings = {
         'history_length': 100
     },
 }
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:

@@ -3,7 +3,7 @@
 #
 # Scimitar: Ye Distributed Debugger
 #
-# Copyright (c) 2016-2017 Parsa Amini
+# Copyright (c) 2016-2020 Parsa Amini
 # Copyright (c) 2016 Hartmut Kaiser
 # Copyright (c) 2016 Thomas Heller
 #
@@ -11,10 +11,8 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 #
 
-from .main import main
+from . import cli
 
 
 if __name__ == '__main__':
-    main()
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:
+    cli.main()

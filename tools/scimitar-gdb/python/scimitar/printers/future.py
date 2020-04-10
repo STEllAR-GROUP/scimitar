@@ -77,5 +77,3 @@ class FuturePrinter(object):
 
 
 scimitar.pretty_printers['hpx::lcos::(shared_)?future<.+>'] = FuturePrinter
-
-# vim: :ai:sw=4:ts=4:sts=4:et:ft=python:fo=corqj2:sm:tw=79:
